@@ -8,11 +8,25 @@ public class World{
       this.islands = islands;
   }
   
+  private Boolean playerIsGrounded(){
+    for(Island isl : islands){
+      if(
+      isl.y_pos < player.y_pos - 100 &&
+      isl.y_pos + 50 > player.y_pos - 100 &&
+      player.x_pos > isl.x_pos &&
+      player.x_pos < isl.x_pos +360
+      ){
+         return true; 
+      }
+    }
+    return false; 
+  }
+  
   public void draw(){
     for(Island isl : islands){
       isl.draw(); 
     }
-    player.draw();
+    player.draw(this.playerIsGrounded());
   }
   
 }

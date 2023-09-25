@@ -11,8 +11,12 @@ void setup(){
   ArrayList<Island> isls = new ArrayList<Island>();
   Player player = new Player(100, 100);
   
-  isls.add(new Island(500, 500));
-  isls.add(new Island(900, 900));
+  isls.add(new Island(1500, 500));
+  isls.add(new Island(1200, 200));
+  isls.add(new Island(500, 300));
+  isls.add(new Island(450, 800));
+  isls.add(new Island(900, 750));
+  isls.add(new Island(100, 500));
   
   world = new World(player, isls);
 }

@@ -16,15 +16,7 @@ public class Player{
      this.y_velocity = 0;
    }
    
-   private Boolean isGrounded(){
-      if(this.y_pos >= height - playerHeight/2){
-        return true; 
-      }else{
-        return false; 
-      }
-   }
-   
-   public void handleControl(){
+   public void handleControl(Boolean isGrounded){
      if(keyboard.isPressed('a') || keyboard.isPressed('A')){
        this.x_velocity = -this.playerSpeed;
      }else if (keyboard.isPressed('d') || keyboard.isPressed('D')){
@@ -33,14 +25,14 @@ public class Player{
        this.x_velocity = 0; 
      }
      
-     if(keyboard.isPressed(' ') && this.isGrounded()){
+     if(keyboard.isPressed(' ') && isGrounded){
        this.y_velocity = -this.playerJumpPower; 
      }
    }
    
-   public void calculatePhysics(){
+   public void calculatePhysics(Boolean isGrounded){
        y_velocity += GRAVITY;
-       if(this.isGrounded() && y_velocity > 0){
+       if(isGrounded && y_velocity > 0){
          y_velocity = 0; 
        }
        
@@ -54,9 +46,9 @@ public class Player{
      rect(x_pos, y_pos-playerHeight/2, playerWidth, playerHeight); 
    }
    
-   public void draw(){
-     this.handleControl();
-     this.calculatePhysics();
+   public void draw(Boolean isGrounded){
+     this.handleControl(isGrounded);
+     this.calculatePhysics(isGrounded);
      this.render();
    }  
 }
