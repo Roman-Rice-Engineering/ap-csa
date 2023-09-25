@@ -1,6 +1,7 @@
 public class World{
   private Player player;
   private ArrayList<Island> islands = new ArrayList<Island>();
+  private ArrayList<Coin> coins = new ArrayList<Coin>();
   private Boolean playerIsGrounded = false;
   
   // This is a variable which holds how much offset
@@ -9,9 +10,10 @@ public class World{
   // the player.
   private float xBasePosition = 0;
   
-  public World(Player player, ArrayList<Island> islands){
+  public World(Player player, ArrayList<Island> islands, ArrayList<Coin> coins){
       this.player = player;
       this.islands = islands;
+      this.coins = coins;
   }
   
   // Short function to check if the base of the
@@ -44,6 +46,22 @@ public class World{
     for(Island isl : islands){
       isl.draw(xBasePosition); 
     }
+    for(int i = 0; i < coins.size(); i++){
+     Coin cn = coins.get(i);
+     cn.draw(xBasePosition); 
+     
+     //Detect Collision with coin
+     if(
+     player.x_pos > cn.x_pos - cn.radius &&
+     player.x_pos < cn.x_pos + cn.radius &&
+     player.y_pos > cn.y_pos - cn.radius &&
+     player.y_pos < cn.x_pos + cn.radius
+     ){
+       coins.remove(i);
+       score.score++;
+     }
+    }
+    
     player.draw(this.playerIsGrounded(), xBasePosition);
   }
   
