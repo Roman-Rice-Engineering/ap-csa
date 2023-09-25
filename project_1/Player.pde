@@ -41,6 +41,7 @@ public class Player{
    }
    
    public void render(){
+     strokeWeight(3);
      fill(100, 100, 100);
      rectMode(CENTER);
      rect(x_pos, y_pos-playerHeight/2, playerWidth, playerHeight); 

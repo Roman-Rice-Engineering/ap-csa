@@ -14,7 +14,7 @@ void setup(){
   isls.add(new Island(1500, 500));
   isls.add(new Island(1200, 200));
   isls.add(new Island(500, 300));
-  isls.add(new Island(450, 800));
+  isls.add(new Island(450, 850));
   isls.add(new Island(900, 750));
   isls.add(new Island(100, 500));
   
@@ -24,6 +24,7 @@ void setup(){
 void draw(){
   background(170, 190, 200);
   world.draw();
+  drawInitial();
 }
 
 void keyPressed(){
