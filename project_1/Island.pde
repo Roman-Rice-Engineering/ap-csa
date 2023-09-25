@@ -11,6 +11,7 @@ class Island{
  
  public void draw(){
   image(sprite, this.x_pos, this.y_pos);
+  rectMode(CENTER);
   fill(128, 130, 86);
   rect(this.x_pos+200, this.y_pos+40, 200, 120);
   fill(80, 80, 80);
