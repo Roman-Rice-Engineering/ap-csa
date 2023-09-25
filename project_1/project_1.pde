@@ -3,18 +3,23 @@ static float GRAVITY = 1;
 Player player = new Player(100, 100);
 KeypressHandler keyboard = new KeypressHandler();
 
-Island island;
+World world;
 
 void setup(){
   frameRate(60);
   fullScreen();
-  island = new Island(500, 500);
+  ArrayList<Island> isls = new ArrayList<Island>();
+  Player player = new Player(100, 100);
+  
+  isls.add(new Island(500, 500));
+  isls.add(new Island(900, 900));
+  
+  world = new World(player, isls);
 }
 
 void draw(){
   background(170, 190, 200);
-  island.draw();
-  player.draw();
+  world.draw();
 }
 
 void keyPressed(){
