@@ -3,6 +3,8 @@ public class World{
   private ArrayList<Island> islands = new ArrayList<Island>();
   private Boolean playerIsGrounded = false;
   
+  private float xBasePosition = 0;
+  
   public World(Player player, ArrayList<Island> islands){
       this.player = player;
       this.islands = islands;
@@ -23,10 +25,16 @@ public class World{
   }
   
   public void draw(){
-    for(Island isl : islands){
-      isl.draw(); 
+    if(player.x_pos - width/2 < xBasePosition - 500){
+     xBasePosition -= player.playerSpeed; 
+    }else if(player.x_pos - width/2 > xBasePosition + 500){
+      xBasePosition += player.playerSpeed; 
     }
-    player.draw(this.playerIsGrounded());
+    
+    for(Island isl : islands){
+      isl.draw(xBasePosition); 
+    }
+    player.draw(this.playerIsGrounded(), xBasePosition);
   }
   
 }

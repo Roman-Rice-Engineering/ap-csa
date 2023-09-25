@@ -40,16 +40,17 @@ public class Player{
        y_pos += y_velocity;
    }
    
-   public void render(){
+   public void render(float x_base){
+     float x_pos = this.x_pos - x_base;
      strokeWeight(3);
      fill(100, 100, 100);
      rectMode(CENTER);
      rect(x_pos, y_pos-playerHeight/2, playerWidth, playerHeight); 
    }
    
-   public void draw(Boolean isGrounded){
+   public void draw(Boolean isGrounded, float x_base){
      this.handleControl(isGrounded);
      this.calculatePhysics(isGrounded);
-     this.render();
+     this.render(x_base);
    }  
 }
