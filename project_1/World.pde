@@ -3,6 +3,10 @@ public class World{
   private ArrayList<Island> islands = new ArrayList<Island>();
   private Boolean playerIsGrounded = false;
   
+  // This is a variable which holds how much offset
+  // everything in the world should have,
+  // storing this offset allows for camera to follow
+  // the player.
   private float xBasePosition = 0;
   
   public World(Player player, ArrayList<Island> islands){
@@ -10,6 +14,8 @@ public class World{
       this.islands = islands;
   }
   
+  // Short function to check if the base of the
+  // player character collides with an island
   private Boolean playerIsGrounded(){
     for(Island isl : islands){
       if(
