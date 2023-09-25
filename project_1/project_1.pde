@@ -1,6 +1,5 @@
 static float GRAVITY = 1;
 
-Player player = new Player(100, 100);
 KeypressHandler keyboard = new KeypressHandler();
 
 World world;
