@@ -31,6 +31,10 @@ public class World{
   }
   
   public void draw(){
+    if(player.y_pos > height + 500){
+      gameState = GameState.MENU; 
+    }
+    
     if(player.x_pos - width/2 < xBasePosition - 500){
      xBasePosition -= player.playerSpeed; 
     }else if(player.x_pos - width/2 > xBasePosition + 500){

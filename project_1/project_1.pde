@@ -1,7 +1,8 @@
 static float GRAVITY = 1;
 
 KeypressHandler keyboard = new KeypressHandler();
-
+GameState gameState = GameState.MENU;
+Menu menu = new Menu();
 World world;
 
 void setup(){
@@ -19,7 +20,11 @@ void setup(){
 
 void draw(){
   background(170, 190, 200);
-  world.draw();
+  if(gameState == GameState.PLAYING){
+    world.draw();
+  }else if(gameState == GameState.MENU){
+     menu.draw();  
+  }
   drawInitial();
 }
 
