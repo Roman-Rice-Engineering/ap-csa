@@ -1,4 +1,5 @@
-static float GRAVITY = 1;
+static final float COURSE_LENGTH = 10;
+static final float GRAVITY = 1;
 
 KeypressHandler keyboard = new KeypressHandler();
 GameState gameState = GameState.MENU;
@@ -12,9 +13,10 @@ void setup(){
   ArrayList<Island> isls = new ArrayList<Island>();
   Player player = new Player(100, 100);
   ArrayList<Coin> coins = new ArrayList<Coin>();
-  for(int i = 0 ; i < 10*width; i += width / 5){
-      isls.add(new Island(i, random(200, height-200)));
-      coins.add(new Coin(i + 2 * width / 5, random(500, height - 400)));
+  for(int i = 0 ; i < COURSE_LENGTH*width; i += width / 5){
+      float islandHeight = random(200, height-200);
+      isls.add(new Island(i, islandHeight));
+      coins.add(new Coin(i + 2 * width / 5, random(200, islandHeight)));
   }
   world = new World(player, isls, coins);
   score = new Score();
