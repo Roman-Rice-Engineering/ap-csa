@@ -55,7 +55,7 @@ public class World{
      player.x_pos > cn.x_pos - cn.radius &&
      player.x_pos < cn.x_pos + cn.radius &&
      player.y_pos > cn.y_pos - cn.radius &&
-     player.y_pos < cn.x_pos + cn.radius
+     player.y_pos < cn.y_pos + cn.radius
      ){
        coins.remove(i);
        score.score++;

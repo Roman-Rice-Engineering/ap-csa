@@ -16,7 +16,7 @@ void setup(){
   for(int i = 0 ; i < COURSE_LENGTH*width; i += width / 5){
       float islandHeight = random(200, height-200);
       isls.add(new Island(i, islandHeight));
-      coins.add(new Coin(i + 2 * width / 5, random(200, islandHeight)));
+      coins.add(new Coin(i + width / 5, random(200, islandHeight)));
   }
   world = new World(player, isls, coins);
   score = new Score();
