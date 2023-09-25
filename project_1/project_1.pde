@@ -10,12 +10,9 @@ void setup(){
   ArrayList<Island> isls = new ArrayList<Island>();
   Player player = new Player(100, 100);
   
-  isls.add(new Island(1500, 500));
-  isls.add(new Island(1200, 200));
-  isls.add(new Island(500, 300));
-  isls.add(new Island(450, 850));
-  isls.add(new Island(900, 750));
-  isls.add(new Island(100, 500));
+  for(int i = 0 ; i < width; i += width / 5){
+      isls.add(new Island(i, random(200, height-200)));
+  }
   
   world = new World(player, isls);
 }
