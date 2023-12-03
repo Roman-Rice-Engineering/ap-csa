@@ -29,10 +29,19 @@ void createImageFile(ArrayList<DrawingStroke> strks){
   String name = "GENERATED_IMAGE_" + hex(strks.hashCode());
   System.out.println("Generated image: " + name);
   PrintWriter writer = createWriter("generated/" + name + ".pde");
-  writer.write("void " + name + "(int xOffset, int yOffset, float scale){\n\tnoStroke();\n\trectMode(CENTER);\n\ttranslate(xOffset, yOffset);\n");
+  writer.write("void " + name + "_COLORED(int xOffset, int yOffset, float scale){\n\tnoStroke();\n\trectMode(CENTER);\n\ttranslate(xOffset, yOffset);\n");
   for(DrawingStroke ele : strks){
     writer.write("\tpushMatrix();\n");
     writer.write("\tfill(" + ele.col + ");\n");
+    writer.write("\ttranslate(((" + ele.mX + " * scale) + (" + ele.oX + " * scale)) / 2, ((" + ele.mY + " * scale) + (" + ele.oY + " * scale)) / 2);\n");
+    writer.write("\trotate(" + (ele.mX - ele.oX != 0 ? "atan2((" + ele.mY + ") - (" + ele.oY + "), (" + ele.mX + ") - (" + ele.oX + "))" : "HALF_PI") + ");\n");
+    writer.write("\trect(0, 0, (" + ele.size + " * scale) + sqrt(pow((" + ele.mX + " * scale) - (" + ele.oX + " * scale), 2) + pow((" + ele.mY + " * scale) - (" + ele.oY + " * scale), 2)), (" + ele.size + " * scale), (" + ele.size + " * scale));\n");
+    writer.write("\tpopMatrix();\n");  
+}
+  writer.write("}\n");
+  writer.write("void " + name + "_MONOCHROME(int xOffset, int yOffset, float scale, color col){\n\tfill(col);\n\tnoStroke();\n\trectMode(CENTER);\n\ttranslate(xOffset, yOffset);\n");
+  for(DrawingStroke ele : strks){
+    writer.write("\tpushMatrix();\n");
     writer.write("\ttranslate(((" + ele.mX + " * scale) + (" + ele.oX + " * scale)) / 2, ((" + ele.mY + " * scale) + (" + ele.oY + " * scale)) / 2);\n");
     writer.write("\trotate(" + (ele.mX - ele.oX != 0 ? "atan2((" + ele.mY + ") - (" + ele.oY + "), (" + ele.mX + ") - (" + ele.oX + "))" : "HALF_PI") + ");\n");
     writer.write("\trect(0, 0, (" + ele.size + " * scale) + sqrt(pow((" + ele.mX + " * scale) - (" + ele.oX + " * scale), 2) + pow((" + ele.mY + " * scale) - (" + ele.oY + " * scale), 2)), (" + ele.size + " * scale), (" + ele.size + " * scale));\n");
